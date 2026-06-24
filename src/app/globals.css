@@ -1,0 +1,42 @@
+@import "../../design-system/tokens/fonts.css";
+@import "../../design-system/tokens/colors.css";
+@import "../../design-system/tokens/typography.css";
+@import "../../design-system/tokens/spacing.css";
+@import "tailwindcss";
+
+:root {
+  /* Map design system paper/ink to background/foreground */
+  --background: var(--paper);
+  --foreground: var(--ink-900);
+  --muted: var(--ink-500);
+  --surface: var(--surface-1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-brand-green: var(--green-500);
+  --color-brand-blue: var(--blue-500);
+  --font-sans: var(--font-sans);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--green-500);
+  color: white;
+}
+
+/* Ensure smooth scrolling across page sections */
+html {
+  scroll-behavior: smooth;
+}

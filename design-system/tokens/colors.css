@@ -1,0 +1,69 @@
+/* ============================================================
+   Manos x Chile — Color Tokens  (Modern refresh)
+   A vivid, confident eco palette: bright recycled-green paired
+   with an energetic ocean-blue, on a clean white canvas with
+   bold dark ink. The blue nods to the beaches the plastic is
+   rescued from; the green to its second life.
+   ============================================================ */
+
+:root {
+  /* --- Brand greens (primary / eco) --- */
+  --green-900: #016C3F; /* deep — text-on-light, pressed */
+  --green-700: #0BA152; /* mid-deep */
+  --green-500: #0FBF62; /* PRIMARY vivid recycled-green */
+  --green-400: #12BB5B; /* alt vivid */
+  --green-100: #DBF7E8; /* soft green wash */
+  --green-50:  #EFFBF4; /* faint green surface */
+
+  /* --- Brand blue (secondary / ocean / actions) --- */
+  --blue-700:  #0a4f9e; /* pressed / hover-dark */
+  --blue-500:  #0066CC; /* SECONDARY ocean-blue — CTAs, rings */
+  --blue-100:  #DCEBFA; /* soft blue wash */
+  --blue-50:   #EFF5FC; /* faint blue surface */
+
+  /* --- Neutrals (ink → paper) --- */
+  --ink-900:  #272626; /* primary text / headings (warm near-black) */
+  --ink-700:  #4A4A4A; /* secondary text */
+  --ink-500:  #797979; /* tertiary / muted (from brand) */
+  --ink-400:  #9E9E9E; /* labels, captions, disabled */
+  --ink-300:  #C9C9C9; /* faint */
+  --line:     #D9D9D9; /* borders / placeholder gray (from brand) */
+  --line-soft:#ECECEC; /* very faint dividers */
+
+  /* --- Surfaces --- */
+  --paper:      #FFFEFE; /* base background (brand off-white) */
+  --surface-1:  #F6F7F8; /* card / section fill */
+  --surface-2:  #EEF0F1; /* image placeholder / inset */
+
+  /* --- Semantic aliases --- */
+  --color-primary:        var(--green-500);
+  --color-primary-hover:  var(--green-700);
+  --color-accent:         var(--blue-500);
+  --color-accent-hover:   var(--blue-700);
+
+  --text-strong:   var(--ink-900);
+  --text-body:     var(--ink-700);
+  --text-muted:    var(--ink-500);
+  --text-label:    var(--ink-400);
+  --text-on-dark:  #FFFEFE;
+  --text-on-green: #FFFEFE;
+  --text-on-blue:  #FFFEFE;
+  --text-eco:      var(--green-500); /* headings / eco accents */
+
+  --surface-page:  var(--paper);
+  --surface-card:  var(--paper);
+  --surface-inset: var(--surface-2);
+
+  --border-default: var(--line);
+  --border-soft:    var(--line-soft);
+  --border-active:  var(--blue-500);
+
+  /* Ring colors for outlined cards (the signature 3px halo) */
+  --ring-blue:  var(--blue-500);
+  --ring-green: var(--green-500);
+
+  /* Overlay used on hero imagery */
+  --overlay-hero: linear-gradient(180deg, rgba(39,38,38,0.30), rgba(39,38,38,0.62)); /* @kind color */
+  /* Vivid brand gradient for accent surfaces */
+  --gradient-brand: linear-gradient(120deg, #0FBF62 0%, #0066CC 100%); /* @kind color */
+}

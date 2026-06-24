@@ -1,0 +1,46 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Forms — Input & Select" subtitle="Underline fields that turn green on focus" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--paper); color: var(--ink-900); }
+  .wrap { padding: 28px 32px; display: grid; grid-template-columns: 1fr 1fr; gap: 28px 40px; max-width: 600px; }
+  .cap { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-400); font-weight: 500; margin-bottom: 10px; display: block; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script type="text/babel">
+  const { Input, Select } = window.ManosXChileDesignSystem_d24107;
+  function Demo() {
+    return (
+      <>
+        <div>
+          <span className="cap">Input — underline</span>
+          <Input placeholder="Nombre" />
+        </div>
+        <div>
+          <span className="cap">Select</span>
+          <Select defaultValue="">
+            <option value="" disabled>Selecciona un motivo</option>
+            <option>Cotización</option>
+            <option>Consulta General</option>
+          </Select>
+        </div>
+        <div style={{ gridColumn: '1 / -1' }}>
+          <span className="cap">Textarea</span>
+          <Input as="textarea" rows={3} placeholder="Mensaje" />
+        </div>
+      </>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

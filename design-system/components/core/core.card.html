@@ -1,0 +1,64 @@
+<!-- @dsCard group="Components" viewport="700x430" name="Core — Buttons, Tags, Cards" subtitle="Actions, chips, eyebrow labels, containers" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--paper); color: var(--ink-900); }
+  .wrap { padding: 28px 32px; display: flex; flex-direction: column; gap: 26px; }
+  .row { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .grp { display: flex; flex-direction: column; gap: 12px; }
+  .cap { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-400); font-weight: 500; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script type="text/babel">
+  const { Button, Tag, SectionLabel, Card } = window.ManosXChileDesignSystem_d24107;
+  function Demo() {
+    return (
+      <>
+        <div className="grp">
+          <span className="cap">Button — variants & sizes</span>
+          <div className="row">
+            <Button>Cotizar</Button>
+            <Button variant="eco">Ver Catálogo</Button>
+            <Button variant="outline">Saber más</Button>
+            <Button variant="outline-green">Nosotros</Button>
+            <Button size="sm">Small</Button>
+          </div>
+        </div>
+        <div className="grp">
+          <span className="cap">Tag</span>
+          <div className="row">
+            <Tag variant="green">100% Reciclado</Tag>
+            <Tag variant="blue">Rescatado de playas</Tag>
+            <Tag variant="solid-green">Certificado</Tag>
+            <Tag variant="outline">NCh973</Tag>
+          </div>
+        </div>
+        <div className="grp">
+          <span className="cap">SectionLabel + Card (signature rings)</span>
+          <div className="row" style={{ alignItems: 'stretch' }}>
+            <Card ring="blue" style={{ flex: 1 }}>
+              <SectionLabel color="blue">Productos</SectionLabel>
+              <p style={{ margin: '8px 0 0', fontWeight: 500, color: 'var(--ink-500)' }}>Blue ring card</p>
+            </Card>
+            <Card ring="green" interactive style={{ flex: 1 }}>
+              <SectionLabel>Materias Primas</SectionLabel>
+              <p style={{ margin: '8px 0 0', fontWeight: 500, color: 'var(--ink-500)' }}>Green ring · lifts on hover</p>
+            </Card>
+          </div>
+        </div>
+      </>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

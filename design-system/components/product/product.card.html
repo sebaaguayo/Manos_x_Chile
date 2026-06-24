@@ -1,0 +1,60 @@
+<!-- @dsCard group="Components" viewport="700x460" name="Product — Cards & Stats" subtitle="Catalog tile, numbered benefit card, impact stat" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--paper); color: var(--ink-900); }
+  .wrap { padding: 28px 32px; display: grid; grid-template-columns: 240px 1fr; gap: 28px; align-items: start; }
+  .stack { display: flex; flex-direction: column; gap: 24px; }
+  .cap { font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-400); font-weight: 500; margin-bottom: 10px; display: block; }
+  .statrow { display: flex; gap: 40px; }
+</style>
+</head>
+<body>
+<div id="root" class="wrap"></div>
+<script type="text/babel">
+  const { ProductCard, BenefitCard, Stat } = window.ManosXChileDesignSystem_d24107;
+  function Demo() {
+    return (
+      <>
+        <div>
+          <span className="cap">ProductCard</span>
+          <ProductCard
+            image="../../assets/product_picnic.jpg"
+            name={"Mesa de picnic\n200×76 cm"}
+            tag="Terminado"
+            note="*descuento por cantidad"
+          />
+        </div>
+        <div className="stack">
+          <div>
+            <span className="cap">BenefitCard</span>
+            <BenefitCard
+              number="01"
+              title="Sostenibilidad"
+              description="500+ toneladas de plástico reciclado anualmente en Chiloé."
+              stats={[{ value: '100%', label: 'Reciclado' }, { value: '-60%', label: 'CO₂' }]}
+            />
+          </div>
+          <div>
+            <span className="cap">Stat</span>
+            <div className="statrow">
+              <Stat value="500+" label="Ton / año" />
+              <Stat value="25+" label="Años útil" />
+              <Stat value="50+" label="Empleos" />
+            </div>
+          </div>
+        </div>
+      </>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Logo" subtitle="Primary mark — hands + leaf, manos CHILE" -->
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<link rel="stylesheet" href="../../styles.css" />
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--paper); }
+  .wrap { display: flex; height: 200px; }
+  .cell { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px; }
+  .cell.dark { background: var(--ink-900); }
+  .cell.brand { background: var(--gradient-brand); }
+  .cell.soft { background: var(--surface-1); border-left: 1px solid var(--line); }
+  img { height: 60px; width: auto; }
+</style></head>
+<body>
+<div class="wrap">
+  <div class="cell"><img src="../../assets/logo.png" alt="Manos x Chile" /></div>
+  <div class="cell soft"><img src="../../assets/logo.png" alt="Manos x Chile" /></div>
+  <div class="cell brand"><img src="../../assets/logo.png" alt="Manos x Chile" style="filter:brightness(0) invert(1)" /></div>
+</div>
+</body></html>

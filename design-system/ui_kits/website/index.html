@@ -1,0 +1,58 @@
+<!-- @dsCard group="Sitio Web" viewport="1280x760" name="Marketing Website" subtitle="Home + catalog with live quote flow" -->
+<!-- @startingPoint section="Sitio Web" subtitle="Manos x Chile marketing site — home + catalog" viewport="1280x900" -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Manos x Chile — Sitio Web</title>
+<link rel="stylesheet" href="../../styles.css" />
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; font-family: var(--font-sans); background: var(--paper); color: var(--ink-900); }
+  #app { display: flex; flex-direction: column; min-height: 100vh; }
+  img { display: block; max-width: 100%; }
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script type="text/babel" src="SiteChrome.jsx"></script>
+<script type="text/babel" src="HomeScreen.jsx"></script>
+<script type="text/babel" src="CatalogScreen.jsx"></script>
+<script type="text/babel" src="AboutScreen.jsx"></script>
+<script type="text/babel" src="ProcessScreen.jsx"></script>
+<script type="text/babel" src="ContactScreen.jsx"></script>
+<script type="text/babel">
+  function App() {
+    const [view, setView] = React.useState('home');
+    const onNav = (v) => { setView(v); window.scrollTo({ top: 0 }); };
+    const screens = {
+      home: () => <window.MxcHomeScreen onNav={onNav} />,
+      catalog: () => <window.MxcCatalogScreen onNav={onNav} />,
+      nosotros: () => <window.MxcAboutScreen onNav={onNav} />,
+      proceso: () => <window.MxcProcessScreen onNav={onNav} />,
+      contacto: () => <window.MxcContactScreen onNav={onNav} />,
+    };
+    const render = screens[view] || screens.home;
+    return (
+      <>
+        <window.MxcNavbar active={view} onNav={onNav} />
+        <main style={{ flex: 1 }}>{render()}</main>
+        <window.MxcFooter />
+      </>
+    );
+  }
+
+  function mount() {
+    const ready = window.MxcNavbar && window.MxcHomeScreen && window.MxcCatalogScreen
+      && window.MxcAboutScreen && window.MxcProcessScreen && window.MxcContactScreen;
+    if (!ready) return setTimeout(mount, 30);
+    ReactDOM.createRoot(document.getElementById('app')).render(<App />);
+  }
+  mount();
+</script>
+</body>
+</html>
