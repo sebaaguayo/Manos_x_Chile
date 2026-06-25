@@ -28,11 +28,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-12 md:gap-16 mb-16">
           <div>
             <Image
-              src="/assets/logo.png"
+              src="/assets/logo_white.png"
               alt="manos CHILE"
               width={121}
               height={42}
-              style={{ height: 36, width: "auto", marginBottom: "1.5rem", filter: "brightness(0) invert(1)" }}
+              style={{ height: 36, width: "auto", marginBottom: "1.5rem" }}
             />
             <p style={{ fontSize: "0.95rem", lineHeight: 1.6, color: "rgba(255,255,255,0.7)", fontWeight: 500, margin: 0 }}>
               Plástico rescatado de las playas de la Patagonia,

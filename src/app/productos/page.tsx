@@ -13,20 +13,24 @@ import {
 interface Product {
   name: string;
   image: string;
+  price: string;
 }
 
 const RAW: Product[] = [
-  { name: "Tabla 15,5 cm × 5,6 cm × 290 cm", image: "product_tabla_15.jpg" },
-  { name: "Estacón redondo 9,5 cm × 240 cm", image: "product_estacon_redondo.jpg" },
-  { name: "Estacón cuadrado 8,8 × 8,8 × 200 cm", image: "product_estacon_cuadrado.jpg" },
+  { name: "Tabla 15,5 cm x 5,6 cm x 290 cm", image: "product_tabla_15.jpg", price: "$23.600" },
+  { name: "Tabla 10 cm x 3,2 cm x 290 cm", image: "product_tabla_10_3_2.jpg", price: "$11.500" },
+  { name: "Tabla 8 cm x 3 cm x 290 cm", image: "product_tabla_8_3.jpg", price: "$7.900" },
+  { name: "Tabla 8 cm x 2,5 x 150 cm", image: "product_tabla_8_2_5.jpg", price: "$3.600" },
+  { name: "Estacón redondo 9,5 cm x 240 cm", image: "product_estacon_redondo.jpg", price: "$18.500" },
+  { name: "Estacón cuadrado 8,8 cm x 8,8 cm x 200 cm", image: "product_estacon_cuadrado.jpg", price: "$15.800" },
 ];
 
 const FINISHED: Product[] = [
-  { name: "Mesa de picnic 200 × 76 cm", image: "product_picnic.jpg" },
-  { name: "Banca 134 × 70 × 45 cm", image: "product_bench.jpg" },
-  { name: "Pallet 120 × 100 × 16 cm", image: "product_pallet.jpg" },
-  { name: "Jardinera 80 × 32 × 25 cm", image: "product_jardinera.jpg" },
-  { name: "Macetero 20 × 20 × 24 cm", image: "product_masetero.jpg" },
+  { name: "Mesa de picnic 200 × 76 cm", image: "product_picnic.jpg", price: "$388.000" },
+  { name: "Banca 134 × 70 × 45 cm", image: "product_bench.jpg", price: "$329.000" },
+  { name: "Pallet 120 × 100 × 16 cm", image: "product_pallet.jpg", price: "$73.000" },
+  { name: "Jardinera 80 × 32 × 25 cm", image: "product_jardinera.jpg", price: "$55.000" },
+  { name: "Macetero 20 × 20 × 24 cm", image: "product_masetero.jpg", price: "$35.000" },
 ];
 
 interface QuoteModalProps {
@@ -159,6 +163,7 @@ export default function Catalogo() {
           note="*descuento según cantidad"
           tag={tag}
           ring={ring}
+          price={p.price}
           onCta={() => setQuote(p)}
         />
       ))}

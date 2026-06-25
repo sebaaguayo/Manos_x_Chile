@@ -85,19 +85,19 @@ export default function Home() {
   return (
     <div>
       {/* HERO */}
-      <section style={{ padding: "2.5rem 2rem 0" }}>
+      <section className="px-4 pt-6 md:px-8 md:pt-10">
         <div
           style={{
             maxWidth: 1280,
             margin: "0 auto",
             position: "relative",
-            height: "70vh",
             minHeight: 520,
             maxHeight: 720,
             overflow: "hidden",
             borderRadius: "var(--radius-2xl)",
             boxShadow: "var(--ring-card-blue)",
           }}
+          className="h-[60vh] md:h-[70vh]"
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -140,14 +140,13 @@ export default function Home() {
               </span>
               <h1
                 style={{
-                  fontSize: "3.6rem",
                   fontWeight: 900,
                   lineHeight: 1.04,
                   letterSpacing: "0.04em",
                   textTransform: "uppercase",
                   margin: "0 0 1.5rem",
                 }}
-                className="text-4xl sm:text-6xl"
+                className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem]"
               >
                 De la costa
                 <br />a tu proyecto

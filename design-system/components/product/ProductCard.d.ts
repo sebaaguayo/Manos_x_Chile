@@ -20,6 +20,7 @@ export interface ProductCardProps {
   ctaVariant?: 'primary' | 'eco' | 'outline';
   onCta?: () => void;
   style?: React.CSSProperties;
+  price?: string;
 }
 
 export function ProductCard(props: ProductCardProps): JSX.Element;

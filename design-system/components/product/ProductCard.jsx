@@ -17,6 +17,7 @@ export function ProductCard({
   ctaVariant,             // defaults to match ring
   onCta,
   style = {},
+  price,
 }) {
   const [hover, setHover] = React.useState(false);
 
@@ -104,8 +105,13 @@ export function ProductCard({
             {note}
           </p>
         )}
-        <div style={{ marginTop: 'auto', paddingTop: '1.25rem' }}>
-          <Button size="sm" variant={btnVariant} fullWidth onClick={onCta}>
+        <div style={{ marginTop: 'auto', paddingTop: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
+          {price && (
+            <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 900, fontSize: '1.1rem', color: 'var(--ink-900)', whiteSpace: 'nowrap' }}>
+              {price}
+            </div>
+          )}
+          <Button size="sm" variant={btnVariant} fullWidth={!price} style={price ? { flex: 1 } : {}} onClick={onCta}>
             {ctaLabel}
           </Button>
         </div>
