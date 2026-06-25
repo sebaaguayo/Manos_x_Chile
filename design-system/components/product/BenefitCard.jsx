@@ -6,8 +6,9 @@ import { Card } from '../core/Card.jsx';
  * bold uppercase title, body, and a 2-up stat footer. Sits on the signature
  * ring-card surface.
  */
-export function BenefitCard({ number, title, description, stats = [], ring = 'green', accent, style = {} }) {
+export function BenefitCard({ number, title, description, stats = [], ring = 'green', accent, icon, style = {} }) {
   const accentColor = accent || (ring === 'blue' ? 'var(--blue-500)' : 'var(--green-500)');
+  const iconWash = ring === 'blue' ? 'var(--blue-50)' : 'var(--green-50)';
   return (
     <Card
       interactive
@@ -15,11 +16,30 @@ export function BenefitCard({ number, title, description, stats = [], ring = 'gr
       padding="1.75rem"
       style={{ display: 'flex', flexDirection: 'column', minHeight: '320px', ...style }}
     >
-      {number && (
-        <div style={{ fontSize: '2.5rem', fontWeight: 900, color: accentColor, lineHeight: 1, marginBottom: '1rem', letterSpacing: '0.02em' }}>
-          {number}
-        </div>
-      )}
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1.1rem' }}>
+        {number && (
+          <div style={{ fontSize: '2.5rem', fontWeight: 900, color: accentColor, lineHeight: 1, letterSpacing: '0.02em' }}>
+            {number}
+          </div>
+        )}
+        {icon && (
+          <div
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 'var(--radius-lg)',
+              background: iconWash,
+              color: accentColor,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            {icon}
+          </div>
+        )}
+      </div>
       <h3 style={{ fontSize: '1.05rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'var(--ink-900)', lineHeight: 1.25, margin: '0 0 0.85rem' }}>
         {title}
       </h3>

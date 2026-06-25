@@ -14,23 +14,24 @@ interface Product {
   name: string;
   image: string;
   price: string;
+  plastic: number | null; // kilos de plástico rescatado · null => cálculo pendiente
 }
 
 const RAW: Product[] = [
-  { name: "Tabla 15,5 cm x 5,6 cm x 290 cm", image: "product_tabla_15.jpg", price: "$23.600" },
-  { name: "Tabla 10 cm x 3,2 cm x 290 cm", image: "product_tabla_10_3_2.jpg", price: "$11.500" },
-  { name: "Tabla 8 cm x 3 cm x 290 cm", image: "product_tabla_8_3.jpg", price: "$7.900" },
-  { name: "Tabla 8 cm x 2,5 x 150 cm", image: "product_tabla_8_2_5.jpg", price: "$3.600" },
-  { name: "Estacón redondo 9,5 cm x 240 cm", image: "product_estacon_redondo.jpg", price: "$18.500" },
-  { name: "Estacón cuadrado 8,8 cm x 8,8 cm x 200 cm", image: "product_estacon_cuadrado.jpg", price: "$15.800" },
+  { name: "Tabla 15,5 cm x 5,6 cm x 290 cm", image: "product_tabla_15.jpg", price: "$23.600", plastic: 21 },
+  { name: "Tabla 10 cm x 3,2 cm x 290 cm", image: "product_tabla_10_3_2.jpg", price: "$11.500", plastic: 9 },
+  { name: "Tabla 8 cm x 3 cm x 290 cm", image: "product_tabla_8_3.jpg", price: "$7.900", plastic: 6 },
+  { name: "Tabla 8 cm x 2,5 x 150 cm", image: "product_tabla_8_2_5.jpg", price: "$3.600", plastic: 3 },
+  { name: "Estacón redondo 9,5 cm x 240 cm", image: "product_estacon_redondo.jpg", price: "$18.500", plastic: 15 },
+  { name: "Estacón cuadrado 8,8 cm x 8,8 cm x 200 cm", image: "product_estacon_cuadrado.jpg", price: "$15.800", plastic: 12 },
 ];
 
 const FINISHED: Product[] = [
-  { name: "Mesa de picnic 200 × 76 cm", image: "product_picnic.jpg", price: "$388.000" },
-  { name: "Banca 134 × 70 × 45 cm", image: "product_bench.jpg", price: "$329.000" },
-  { name: "Pallet 120 × 100 × 16 cm", image: "product_pallet.jpg", price: "$73.000" },
-  { name: "Jardinera 80 × 32 × 25 cm", image: "product_jardinera.jpg", price: "$55.000" },
-  { name: "Macetero 20 × 20 × 24 cm", image: "product_masetero.jpg", price: "$35.000" },
+  { name: "Mesa de picnic 200 × 76 cm", image: "product_picnic.jpg", price: "$388.000", plastic: 151 },
+  { name: "Banca 134 × 70 × 45 cm", image: "product_bench.jpg", price: "$329.000", plastic: 70 },
+  { name: "Pallet 120 × 100 × 16 cm", image: "product_pallet.jpg", price: "$73.000", plastic: 38 },
+  { name: "Jardinera", image: "product_jardinera.jpg", price: "$55.000", plastic: null },
+  { name: "Macetero", image: "product_masetero.jpg", price: "$35.000", plastic: null },
 ];
 
 interface QuoteModalProps {
@@ -160,10 +161,11 @@ export default function Catalogo() {
           key={p.name}
           image={`/assets/${p.image}`}
           name={p.name}
-          note="*descuento según cantidad"
           tag={tag}
           ring={ring}
           price={p.price}
+          recycledKg={p.plastic ?? undefined}
+          recycledPending={p.plastic === null}
           onCta={() => setQuote(p)}
         />
       ))}
@@ -220,11 +222,11 @@ export default function Catalogo() {
               }}
               className="text-xl sm:text-2xl"
             >
-              Materias Primas
+              Materiales para Construcción
             </h2>
             <Tag variant="blue">ASTM · NCh</Tag>
           </div>
-          <Grid items={RAW} tag="Materia Prima" ring="blue" />
+          <Grid items={RAW} tag="Construcción" ring="blue" />
         </section>
 
         {/* Productos Terminados */}

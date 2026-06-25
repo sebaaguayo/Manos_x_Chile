@@ -56,7 +56,7 @@ export function Navbar() {
         </Link>
 
         {/* Desktop Menu */}
-        <div style={{ display: "flex", alignItems: "center", gap: "2.25rem" }} className="hidden md:flex">
+        <div className="nav-desktop">
           {links.map((l) => {
             const isActive = pathname === l.href;
             return (
@@ -94,8 +94,9 @@ export function Navbar() {
             padding: "0.5rem",
             color: "var(--ink-900)",
           }}
-          className="flex md:hidden"
+          className="nav-hamburger"
           aria-label="Menú principal"
+          aria-expanded={mobileMenuOpen}
         >
           <svg
             width="24"
@@ -135,13 +136,12 @@ export function Navbar() {
             WebkitBackdropFilter: "blur(15px)",
             borderBottom: "1.5px solid var(--line)",
             padding: "2rem",
-            display: "flex",
             flexDirection: "column",
             gap: "1.5rem",
             zIndex: 99,
             boxShadow: "var(--shadow-md)",
           }}
-          className="md:hidden"
+          className="nav-mobile-panel"
         >
           {links.map((l) => {
             const isActive = pathname === l.href;

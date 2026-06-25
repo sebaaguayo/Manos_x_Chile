@@ -11,6 +11,8 @@ import {
   Stat,
   Card,
 } from "@/components/design-system";
+import { WavesIcon, ShieldIcon, LocationIcon, MedalIcon } from "@/components/Icons";
+import { IsoRescate, IsoTransformacion, IsoEcomadera } from "@/components/Illustrations";
 
 export default function Home() {
   const router = useRouter();
@@ -20,6 +22,7 @@ export default function Home() {
       number: "01",
       title: "Rescatado de playas",
       ring: "blue" as const,
+      icon: <WavesIcon size={32} />,
       description:
         "Recuperamos plástico de las costas y la industria acuícola de la Patagonia antes de que llegue al mar.",
       stats: [
@@ -31,6 +34,7 @@ export default function Home() {
       number: "02",
       title: "Durabilidad",
       ring: "green" as const,
+      icon: <ShieldIcon size={32} />,
       description:
         "Certificaciones ASTM y NCh. Vida útil superior a 25 años, resistencia IP65.",
       stats: [
@@ -42,6 +46,7 @@ export default function Home() {
       number: "03",
       title: "Impacto Local",
       ring: "blue" as const,
+      icon: <LocationIcon size={32} />,
       description:
         "Producción 100% en Chiloé. 50+ empleos locales y economía regional.",
       stats: [
@@ -53,6 +58,7 @@ export default function Home() {
       number: "04",
       title: "Calidad",
       ring: "green" as const,
+      icon: <MedalIcon size={32} />,
       description:
         "Certificación ISO internacional y control riguroso de cada lote.",
       stats: [
@@ -67,16 +73,19 @@ export default function Home() {
       number: "01",
       title: "Rescate",
       desc: "Recolectamos plástico de playas, costas y la industria acuícola.",
+      illustration: <IsoRescate />,
     },
     {
       number: "02",
       title: "Transformación",
       desc: "Lavado, molienda y extrusión de alta tecnología.",
+      illustration: <IsoTransformacion />,
     },
     {
       number: "03",
       title: "Ecomadera",
       desc: "Tablas y mobiliario duraderos con una segunda vida.",
+      illustration: <IsoEcomadera />,
     },
   ];
 
@@ -101,8 +110,8 @@ export default function Home() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/hero_banner.jpg"
-            alt="Costa de Chiloé con desechos plásticos"
+            src="/assets/hero_costa.jpg"
+            alt="Costa de la Patagonia de donde se rescata el plástico"
             style={{
               position: "absolute",
               inset: 0,
@@ -295,7 +304,7 @@ export default function Home() {
             {[
               {
                 img: "product_tabla_15.jpg",
-                t: "Materias Primas",
+                t: "Materiales para Construcción",
                 d: "Tablas y estacones para construcción.",
                 ring: "blue" as const,
               },
@@ -351,6 +360,16 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             {steps.map((s, i) => (
               <Card key={s.number} ring={i === 1 ? "green" : "blue"} padding="2rem">
+                <div
+                  style={{
+                    background: i === 1 ? "var(--green-50)" : "var(--blue-50)",
+                    borderRadius: "var(--radius-lg)",
+                    marginBottom: "1.5rem",
+                    padding: "0.5rem 1rem",
+                  }}
+                >
+                  {s.illustration}
+                </div>
                 <span
                   style={{
                     fontSize: "2.75rem",

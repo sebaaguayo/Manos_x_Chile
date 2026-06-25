@@ -18,6 +18,8 @@ export interface BenefitCardProps {
   ring?: 'green' | 'blue';
   /** Override the accent color directly. */
   accent?: string;
+  /** Icono minimalista mostrado junto al número. */
+  icon?: React.ReactNode;
   style?: React.CSSProperties;
 }
 

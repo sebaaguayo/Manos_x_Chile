@@ -8,39 +8,73 @@ import {
   Card,
   BenefitCard,
 } from "@/components/design-system";
+import {
+  WavesIcon,
+  FunnelIcon,
+  GearIcon,
+  BoxIcon,
+  TruckIcon,
+} from "@/components/Icons";
+import { IsoRescate, IsoTransformacion, IsoEcomadera } from "@/components/Illustrations";
 
 export default function Proceso() {
   const router = useRouter();
   const wrap = { maxWidth: 1280, margin: "0 auto", padding: "0 2rem" };
 
+  const stages = [
+    {
+      title: "Rescate",
+      illustration: <IsoRescate />,
+      ring: "blue" as const,
+      description: "Recuperamos el plástico de las costas y la industria acuícola de la Patagonia.",
+    },
+    {
+      title: "Transformación",
+      illustration: <IsoTransformacion />,
+      ring: "green" as const,
+      description: "Lavado, molienda y extrusión de alta tecnología para darle una segunda vida.",
+    },
+    {
+      title: "Ecomadera",
+      illustration: <IsoEcomadera />,
+      ring: "blue" as const,
+      description: "Tablas y mobiliario de larga duración, listos para tu proyecto.",
+    },
+  ];
+
   const steps = [
     {
       number: "01",
       title: "Rescate",
+      icon: <WavesIcon size={34} />,
       description:
         "Recolectamos plástico de las playas y costas, de la industria de la acuicultura y de uso doméstico en Chiloé y Puerto Montt.",
     },
     {
       number: "02",
       title: "Clasificación",
+      icon: <FunnelIcon size={34} />,
       description:
         "Separamos y clasificamos los plásticos según su tipo y calidad para garantizar productos de excelencia.",
     },
     {
       number: "03",
       title: "Procesamiento",
+      icon: <GearIcon size={34} />,
       description:
         "Limpiamos, trituramos y procesamos el material para transformarlo en materia prima de alta calidad.",
     },
     {
       number: "04",
       title: "Transformación",
+      icon: <BoxIcon size={34} />,
       description:
         "Moldeamos y fabricamos Ecomadera y productos duraderos con estándares de calidad industrial.",
     },
     {
       number: "05",
       title: "Distribución",
+      icon: <TruckIcon size={34} />,
       description:
         "Entregamos a clientes en Chiloé y todo Chile, cerrando el ciclo de la economía circular.",
     },
@@ -137,8 +171,49 @@ export default function Proceso() {
         </p>
       </section>
 
+      {/* ISOMETRIC STAGES */}
+      <section style={{ padding: "1rem 0 2rem" }}>
+        <div style={wrap}>
+          <SectionLabel>El proceso en 3 etapas</SectionLabel>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
+            {stages.map((s) => (
+              <Card key={s.title} ring={s.ring} interactive padding="2rem">
+                <div
+                  style={{
+                    background: s.ring === "green" ? "var(--green-50)" : "var(--blue-50)",
+                    borderRadius: "var(--radius-lg)",
+                    padding: "0.5rem 1rem",
+                    marginBottom: "1.5rem",
+                  }}
+                >
+                  {s.illustration}
+                </div>
+                <h3
+                  style={{
+                    fontSize: "1.15rem",
+                    fontWeight: 800,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    color: "var(--ink-900)",
+                    margin: "0 0 0.6rem",
+                  }}
+                >
+                  {s.title}
+                </h3>
+                <p style={{ fontSize: "0.95rem", color: "var(--ink-500)", fontWeight: 500, margin: 0, lineHeight: 1.6 }}>
+                  {s.description}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* STEPS timeline */}
       <section style={{ padding: "3rem 0 6rem" }}>
+        <div style={{ ...wrap, marginBottom: "2.5rem" }}>
+          <SectionLabel>Paso a paso</SectionLabel>
+        </div>
         <div style={wrap}>
           <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
             {steps.map((s, i) => (
@@ -155,9 +230,12 @@ export default function Proceso() {
                       background: i % 2 ? "var(--green-50)" : "var(--blue-50)",
                       alignSelf: "stretch",
                       display: "flex",
+                      flexDirection: "column",
                       alignItems: "center",
                       justifyContent: "center",
+                      gap: "0.75rem",
                       padding: "2.25rem 0",
+                      color: i % 2 ? "var(--green-500)" : "var(--blue-500)",
                     }}
                     className="md:border-r border-b md:border-b-0 border-[var(--line-soft)]"
                   >
@@ -171,6 +249,7 @@ export default function Proceso() {
                     >
                       {s.number}
                     </span>
+                    {s.icon}
                   </div>
                   <div className="p-6 md:p-8">
                     <h3

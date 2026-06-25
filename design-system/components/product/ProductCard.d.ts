@@ -21,6 +21,12 @@ export interface ProductCardProps {
   onCta?: () => void;
   style?: React.CSSProperties;
   price?: string;
+  /** Kilos de plástico rescatado para fabricar el producto. */
+  recycledKg?: number;
+  /** Muestra "cálculo de kilos de plástico pendiente" en vez del número. */
+  recycledPending?: boolean;
+  /** Nota pequeña junto al precio. Por defecto "*IVA incluído". */
+  ivaNote?: string;
 }
 
 export function ProductCard(props: ProductCardProps): JSX.Element;

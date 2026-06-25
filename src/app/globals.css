@@ -40,3 +40,33 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* ============================================================
+   Navbar responsive behaviour (media-query based so it never
+   depends on inline-style vs utility-class precedence).
+   ============================================================ */
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: 2.25rem;
+}
+.nav-hamburger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.nav-mobile-panel {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .nav-desktop {
+    display: flex;
+  }
+  .nav-hamburger {
+    display: none;
+  }
+  .nav-mobile-panel {
+    display: none;
+  }
+}

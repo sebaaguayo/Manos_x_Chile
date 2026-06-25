@@ -1,6 +1,31 @@
 import React from 'react';
 import { Button } from '../core/Button.jsx';
 
+/** Símbolo de reciclaje minimalista (Lucide "recycle"). */
+function RecycleMark({ size = 15, color = 'var(--green-500)' }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ flexShrink: 0, marginTop: '0.05rem' }}
+      aria-hidden
+    >
+      <path d="M7 19H4.815a1.83 1.83 0 0 1-1.57-.881 1.785 1.785 0 0 1-.004-1.784L7.196 9.5" />
+      <path d="M11 19h8.203a1.83 1.83 0 0 0 1.556-.89 1.784 1.784 0 0 0 0-1.775l-1.226-2.12" />
+      <path d="m14 16-3 3 3 3" />
+      <path d="M8.293 13.596 7.196 9.5 3.1 10.598" />
+      <path d="m9.344 5.811 1.093-1.892A1.83 1.83 0 0 1 11.985 3a1.784 1.784 0 0 1 1.546.888l3.943 6.843" />
+      <path d="m13.378 9.633 4.096 1.098 1.097-4.096" />
+    </svg>
+  );
+}
+
 /**
  * ProductCard — catalog tile (modern refresh, matches the Figma).
  * Beveled 24px white card with a 3px colored ring + drop shadow, a rounded
@@ -18,6 +43,9 @@ export function ProductCard({
   onCta,
   style = {},
   price,
+  recycledKg,             // number — kilos de plástico rescatado
+  recycledPending = false, // true => "cálculo pendiente"
+  ivaNote = '*IVA incluído',
 }) {
   const [hover, setHover] = React.useState(false);
 
@@ -100,15 +128,45 @@ export function ProductCard({
         >
           {name}
         </h3>
+        {(recycledPending || typeof recycledKg === 'number') && (
+          <p
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '0.45rem',
+              fontSize: '0.8rem',
+              lineHeight: 1.5,
+              color: 'var(--ink-500)',
+              fontWeight: 500,
+              margin: '0.6rem 0 0',
+            }}
+          >
+            <RecycleMark color={ring === 'green' ? 'var(--green-500)' : 'var(--blue-500)'} />
+            <span>
+              {recycledPending ? (
+                <>Cálculo de <strong style={{ color: 'var(--ink-900)' }}>kilos de plástico</strong> pendiente.</>
+              ) : (
+                <>{recycledKg} <strong style={{ color: 'var(--ink-900)' }}>kilos de plástico</strong> rescatado para fabricar este producto.</>
+              )}
+            </span>
+          </p>
+        )}
         {note && (
           <p style={{ fontSize: '0.8rem', color: 'var(--ink-500)', fontStyle: 'italic', fontWeight: 500, margin: '0.6rem 0 0' }}>
             {note}
           </p>
         )}
-        <div style={{ marginTop: 'auto', paddingTop: '1.25rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.75rem' }}>
+        <div style={{ marginTop: 'auto', paddingTop: '1.25rem', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', gap: '0.75rem' }}>
           {price && (
-            <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 900, fontSize: '1.1rem', color: 'var(--ink-900)', whiteSpace: 'nowrap' }}>
-              {price}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.15rem' }}>
+              <div style={{ fontFamily: 'var(--font-sans)', fontWeight: 900, fontSize: '1.1rem', color: 'var(--ink-900)', whiteSpace: 'nowrap' }}>
+                {price}
+              </div>
+              {ivaNote && (
+                <div style={{ fontSize: '0.7rem', color: 'var(--ink-400)', fontWeight: 500, whiteSpace: 'nowrap' }}>
+                  {ivaNote}
+                </div>
+              )}
             </div>
           )}
           <Button size="sm" variant={btnVariant} fullWidth={!price} style={price ? { flex: 1 } : {}} onClick={onCta}>
