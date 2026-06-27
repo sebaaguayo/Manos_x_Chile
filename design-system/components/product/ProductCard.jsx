@@ -45,7 +45,7 @@ export function ProductCard({
   price,
   recycledKg,             // number — kilos de plástico rescatado
   recycledPending = false, // true => "cálculo pendiente"
-  ivaNote = '*IVA incluído',
+  ivaNote = '*IVA incluido',
 }) {
   const [hover, setHover] = React.useState(false);
 

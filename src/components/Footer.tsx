@@ -105,7 +105,7 @@ export function Footer() {
         </div>
         <div style={{ paddingTop: "2rem", borderTop: "1.5px solid rgba(255,255,255,0.12)", fontSize: "0.78rem", color: "rgba(255,255,255,0.5)", display: "flex", justifyContent: "space-between", flexWrap: "wrap", gap: "1rem", fontWeight: 500 }}>
           <span>© {new Date().getFullYear()} Manos x Chile. Todos los derechos reservados.</span>
-          <span>Desarrollado por El Faro, desde Puerto Varas</span>
+          <span>Desarrollo por <a href="https://sebaaguayo.dev/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">sebaaguayo.dev</a></span>
         </div>
       </div>
     </footer>
