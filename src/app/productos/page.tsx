@@ -30,8 +30,8 @@ const FINISHED: Product[] = [
   { name: "Mesa de picnic 200 × 76 cm", image: "product_picnic.jpg", price: "$388.000", plastic: 151 },
   { name: "Banca 134 × 70 × 45 cm", image: "product_bench.jpg", price: "$329.000", plastic: 70 },
   { name: "Pallet 120 × 100 × 16 cm", image: "product_pallet.jpg", price: "$73.000", plastic: 38 },
-  { name: "Jardinera", image: "product_jardinera.jpg", price: "$55.000", plastic: null },
-  { name: "Macetero", image: "product_masetero.jpg", price: "$35.000", plastic: null },
+  { name: "Jardinera", image: "product_jardinera.jpg", price: "$55.000", plastic: 11 },
+  { name: "Macetero", image: "product_masetero.jpg", price: "$35.000", plastic: 6 },
 ];
 
 interface QuoteModalProps {
