@@ -24,7 +24,7 @@ export function Footer() {
   ];
 
   return (
-    <footer style={{ background: "var(--ink-900)", padding: "5rem 0 2.5rem", marginTop: "auto" }}>
+    <footer style={{ background: "var(--footer-bg)", padding: "5rem 0 2.5rem", marginTop: "auto" }}>
       <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 2rem" }}>
         <div className="grid grid-cols-1 md:grid-cols-[320px_1fr] gap-12 md:gap-16 mb-16">
           <div>
@@ -36,8 +36,8 @@ export function Footer() {
               style={{ height: 36, width: "auto", marginBottom: "1.5rem" }}
             />
             <p style={{ fontSize: "0.95rem", lineHeight: 1.6, color: "rgba(255,255,255,0.7)", fontWeight: 500, margin: 0 }}>
-              Plástico rescatado de las playas de la Patagonia,
-              <br /> con una segunda vida. Desde Chiloé para el mundo.
+              Productos hechos de plástico rescatado de playas de Chiloé.
+              <br /> Desde Chiloé para el mundo.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">

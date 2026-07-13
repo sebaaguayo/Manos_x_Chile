@@ -12,7 +12,6 @@ import {
   Card,
 } from "@/components/design-system";
 import { WavesIcon, ShieldIcon, LocationIcon, MedalIcon } from "@/components/Icons";
-import { IsoRescate, IsoTransformacion, IsoEcomadera } from "@/components/Illustrations";
 
 export default function Home() {
   const router = useRouter();
@@ -60,9 +59,9 @@ export default function Home() {
       ring: "green" as const,
       icon: <MedalIcon size={32} />,
       description:
-        "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUS S.A. de la Universidad Católica de Chile.",
+        "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUC S.A. de la Universidad Católica de Chile.",
       stats: [
-        { value: "DICTUS", label: "Laboratorio UC" },
+        { value: "DICTUC", label: "Laboratorio UC" },
         { value: "-60%", label: "CO₂" },
       ],
     },
@@ -73,19 +72,22 @@ export default function Home() {
       number: "01",
       title: "Rescate",
       desc: "Recolectamos plástico de playas, costas y la industria acuícola.",
-      illustration: <IsoRescate />,
+      image: "rescate.png",
+      alt: "Ilustración del rescate de plástico en la costa",
     },
     {
       number: "02",
       title: "Transformación",
       desc: "Lavado, molienda y extrusión de alta tecnología.",
-      illustration: <IsoTransformacion />,
+      image: "transformacion.png",
+      alt: "Ilustración del proceso de transformación del plástico",
     },
     {
       number: "03",
       title: "Ecomadera",
       desc: "Tablas y mobiliario duraderos con una segunda vida.",
-      illustration: <IsoEcomadera />,
+      image: "ecomadera.png",
+      alt: "Ilustración de productos de ecomadera terminados",
     },
   ];
 
@@ -110,8 +112,8 @@ export default function Home() {
         >
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/assets/hero_costa.jpg"
-            alt="Costa de la Patagonia de donde se rescata el plástico"
+            src="/assets/hero_banner.png"
+            alt="Costa de Chiloé de donde se rescata el plástico"
             style={{
               position: "absolute",
               inset: 0,
@@ -198,7 +200,6 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          <Stat value="10+" label="Toneladas recicladas / mes" color="blue" />
           <Stat value="25+" label="Años de vida útil" />
           <Stat value="15" label="Empleos en Chiloé" color="blue" />
           <Stat value="-60%" label="Huella de CO₂" />
@@ -304,50 +305,27 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                img: "product_tabla_15.jpg",
+                img: "materiales_construccion.png",
                 t: "Materiales para Construcción",
-                d: "Tablas y estacones para construcción.",
-                ring: "blue" as const,
+                ring: "var(--ring-card-blue)",
               },
               {
-                img: "product_picnic.jpg",
-                t: "Mobiliario",
-                d: "Bancas, mesas y soluciones urbanas.",
-                ring: "green" as const,
+                img: "productos_terminados.png",
+                t: "Productos terminados",
+                ring: "var(--ring-card-green)",
               },
             ].map((c) => (
               <Link
                 key={c.t}
                 href="/productos"
-                style={{ textDecoration: "none" }}
+                aria-label={`Ver ${c.t}`}
+                className="depth-card"
+                style={{ boxShadow: c.ring }}
               >
-                <Card ring={c.ring} interactive padding="0.9rem" style={{ overflow: "hidden" }}>
-                  <div style={{ borderRadius: "var(--radius-lg)", overflow: "hidden", marginBottom: "1.25rem" }}>
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/assets/${c.img}`}
-                      alt={c.t}
-                      style={{ width: "100%", height: 360, objectFit: "cover", display: "block" }}
-                    />
-                  </div>
-                  <div style={{ padding: "0 0.5rem 0.5rem" }}>
-                    <h3
-                      style={{
-                        fontSize: "1.15rem",
-                        fontWeight: 800,
-                        letterSpacing: "0.06em",
-                        textTransform: "uppercase",
-                        color: "var(--ink-900)",
-                        margin: "0 0 0.4rem",
-                      }}
-                    >
-                      {c.t}
-                    </h3>
-                    <p style={{ fontSize: "0.95rem", color: "var(--ink-500)", fontWeight: 500, margin: 0 }}>
-                      {c.d}
-                    </p>
-                  </div>
-                </Card>
+                <div className="depth-media">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`/assets/${c.img}`} alt={c.t} />
+                </div>
               </Link>
             ))}
           </div>
@@ -361,15 +339,9 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             {steps.map((s, i) => (
               <Card key={s.number} ring={i === 1 ? "green" : "blue"} padding="2rem">
-                <div
-                  style={{
-                    background: i === 1 ? "var(--green-50)" : "var(--blue-50)",
-                    borderRadius: "var(--radius-lg)",
-                    marginBottom: "1.5rem",
-                    padding: "0.5rem 1rem",
-                  }}
-                >
-                  {s.illustration}
+                <div className="process-illustration" style={{ marginBottom: "1.5rem" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`/assets/${s.image}`} alt={s.alt} />
                 </div>
                 <span
                   style={{

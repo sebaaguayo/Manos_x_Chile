@@ -27,7 +27,7 @@ export const NEWS: NewsArticle[] = [
       "La empresa dedicada a darle nuevos usos al plástico, fue partícipe de la II Feria sustentable del Medio Ambiente en Quinchao y del primer Seminario “De residuo a recurso” en Castro.",
     date: "Julio 2026",
     category: "Comunidad",
-    image: "noticia_ferias_chiloe.jpg",
+    image: "noticia_ferias_chiloe.png",
     imageAlt: "Stand de Manos x Chile en feria sustentable en Chiloé",
     body: [
       {

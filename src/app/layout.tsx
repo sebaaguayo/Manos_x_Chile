@@ -15,7 +15,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-CL" className="h-full antialiased">
+    <html lang="es-CL" className="h-full antialiased" suppressHydrationWarning>
+      <head>
+        {/* Fija el tema guardado (o el del sistema) antes del primer pintado */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var t=localStorage.getItem('mxc-theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){}})();",
+          }}
+        />
+      </head>
       <body className="min-h-full flex flex-col bg-[var(--paper)] text-[var(--ink-900)] selection:bg-[var(--green-500)] selection:text-white">
         <Navbar />
         <main className="flex-grow">{children}</main>

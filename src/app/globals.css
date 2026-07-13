@@ -10,6 +10,41 @@
   --foreground: var(--ink-900);
   --muted: var(--ink-500);
   --surface: var(--surface-1);
+
+  /* Superficies específicas de layout (con variante dark) */
+  --nav-bg: rgba(255, 254, 254, 0.9);
+  --nav-panel-bg: rgba(255, 254, 254, 0.98);
+  --footer-bg: #272626;
+}
+
+/* ============================================================
+   Modo oscuro — se activa con data-theme="dark" en <html>.
+   Solo se redefinen los tokens de color; los componentes ya
+   consumen var(--...) por lo que heredan el tema completo.
+   ============================================================ */
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  --paper: #17181a;
+  --surface-1: #1e2022;
+  --surface-2: #26282b;
+
+  --ink-900: #f4f3f1;
+  --ink-700: #d6d5d2;
+  --ink-500: #a5a5a2;
+  --ink-400: #8b8b8e;
+  --ink-300: #55565a;
+  --line: #3b3c40;
+  --line-soft: #2a2b2f;
+
+  --green-50: #12281c;
+  --green-100: #173523;
+  --blue-50: #12202e;
+  --blue-100: #16293d;
+
+  --nav-bg: rgba(23, 24, 26, 0.88);
+  --nav-panel-bg: rgba(23, 24, 26, 0.98);
+  --footer-bg: #101112;
 }
 
 @theme inline {
@@ -68,5 +103,109 @@ html {
   }
   .nav-mobile-panel {
     display: none;
+  }
+}
+
+/* Logo según tema (logo.png tiene fondo claro; en oscuro se usa el blanco) */
+.logo-dark {
+  display: none;
+}
+html[data-theme="dark"] .logo-light {
+  display: none;
+}
+html[data-theme="dark"] .logo-dark {
+  display: block;
+}
+
+/* Botón circular de cambio de tema */
+.theme-toggle {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--line);
+  background: var(--paper);
+  color: var(--ink-900);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: border-color var(--dur-fast) ease, color var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
+}
+.theme-toggle:hover {
+  border-color: var(--green-500);
+  color: var(--green-500);
+  transform: rotate(12deg);
+}
+
+/* ============================================================
+   Pastillas de proceso — ilustración vertical que se recorre
+   lentamente de arriba a abajo dentro del marco actual.
+   ============================================================ */
+.process-illustration {
+  aspect-ratio: 6 / 5;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--surface-2);
+}
+.process-illustration img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 0%;
+  display: block;
+  animation: process-pan 16s ease-in-out infinite alternate;
+}
+@keyframes process-pan {
+  from {
+    object-position: 50% 0%;
+  }
+  to {
+    object-position: 50% 100%;
+  }
+}
+
+/* ============================================================
+   Tarjetas de categoría (home) — arte plano de marca con
+   sensación de profundidad al pasar el mouse.
+   ============================================================ */
+.depth-card {
+  display: block;
+  border-radius: var(--radius-xl);
+  background: var(--paper);
+  padding: 0.9rem;
+  transform: perspective(1100px);
+  transition: transform 0.45s var(--ease-out), box-shadow 0.45s ease;
+  will-change: transform;
+}
+.depth-card:hover {
+  transform: perspective(1100px) rotateX(3deg) rotateY(-4deg) translateY(-8px)
+    scale(1.01);
+}
+.depth-card .depth-media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+.depth-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+.depth-card:hover img {
+  transform: scale(1.07) translate(1.5%, -1.5%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process-illustration img {
+    animation: none;
+    object-position: 50% 50%;
+  }
+  .depth-card,
+  .depth-card:hover,
+  .depth-card img,
+  .depth-card:hover img {
+    transform: none;
+    transition: none;
   }
 }

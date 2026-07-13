@@ -23,7 +23,7 @@ export default function Nosotros() {
     },
     {
       t: "Calidad",
-      d: "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUS S.A. de la Universidad Católica de Chile.",
+      d: "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUC S.A. de la Universidad Católica de Chile.",
       ring: "blue" as const,
     },
     {
@@ -39,7 +39,6 @@ export default function Nosotros() {
   ];
 
   const impact = [
-    { v: "10+", l: "Ton recicladas / mes", c: "blue" as const },
     { v: "15+", l: "Empleos locales", c: "green" as const },
     { v: "100%", l: "Compromiso con Chiloé", c: "blue" as const },
   ];

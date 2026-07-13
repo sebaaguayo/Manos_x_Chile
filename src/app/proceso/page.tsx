@@ -15,7 +15,6 @@ import {
   BoxIcon,
   TruckIcon,
 } from "@/components/Icons";
-import { IsoRescate, IsoTransformacion, IsoEcomadera } from "@/components/Illustrations";
 
 export default function Proceso() {
   const router = useRouter();
@@ -24,19 +23,22 @@ export default function Proceso() {
   const stages = [
     {
       title: "Rescate",
-      illustration: <IsoRescate />,
+      image: "rescate.png",
+      alt: "Ilustración del rescate de plástico en la costa",
       ring: "blue" as const,
       description: "Recuperamos el plástico de las costas y la industria acuícola de la Patagonia.",
     },
     {
       title: "Transformación",
-      illustration: <IsoTransformacion />,
+      image: "transformacion.png",
+      alt: "Ilustración del proceso de transformación del plástico",
       ring: "green" as const,
       description: "Lavado, molienda y extrusión de alta tecnología para darle una segunda vida.",
     },
     {
       title: "Ecomadera",
-      illustration: <IsoEcomadera />,
+      image: "ecomadera.png",
+      alt: "Ilustración de productos de ecomadera terminados",
       ring: "blue" as const,
       description: "Tablas y mobiliario de larga duración, listos para tu proyecto.",
     },
@@ -115,9 +117,9 @@ export default function Proceso() {
       number: "04",
       title: "Calidad",
       ring: "blue" as const,
-      description: "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUS S.A. de la Universidad Católica de Chile.",
+      description: "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUC S.A. de la Universidad Católica de Chile.",
       stats: [
-        { value: "DICTUS", label: "Laboratorio UC" },
+        { value: "DICTUC", label: "Laboratorio UC" },
         { value: "100%", label: "Inspeccionado" },
       ],
     },
@@ -178,15 +180,9 @@ export default function Proceso() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
             {stages.map((s) => (
               <Card key={s.title} ring={s.ring} interactive padding="2rem">
-                <div
-                  style={{
-                    background: s.ring === "green" ? "var(--green-50)" : "var(--blue-50)",
-                    borderRadius: "var(--radius-lg)",
-                    padding: "0.5rem 1rem",
-                    marginBottom: "1.5rem",
-                  }}
-                >
-                  {s.illustration}
+                <div className="process-illustration" style={{ marginBottom: "1.5rem" }}>
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={`/assets/${s.image}`} alt={s.alt} />
                 </div>
                 <h3
                   style={{
