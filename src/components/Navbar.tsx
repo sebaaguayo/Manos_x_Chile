@@ -15,6 +15,7 @@ export function Navbar() {
     { href: "/proceso", label: "Cómo Funciona" },
     { href: "/productos", label: "Productos" },
     { href: "/nosotros", label: "Nosotros" },
+    { href: "/noticias", label: "Noticias" },
     { href: "/contacto", label: "Contacto" },
   ];
 

@@ -26,8 +26,8 @@ export default function Home() {
       description:
         "Recuperamos plástico de las costas y la industria acuícola de la Patagonia antes de que llegue al mar.",
       stats: [
-        { value: "500+", label: "Ton / año" },
         { value: "100%", label: "Reciclado" },
+        { value: "0", label: "Residuos al vertedero" },
       ],
     },
     {
@@ -36,7 +36,7 @@ export default function Home() {
       ring: "green" as const,
       icon: <ShieldIcon size={32} />,
       description:
-        "Certificaciones ASTM y NCh. Vida útil superior a 25 años, resistencia IP65.",
+        "Vida útil superior a 25 años y resistencia IP65 a la intemperie.",
       stats: [
         { value: "25+", label: "Años" },
         { value: "IP65", label: "Resistencia" },
@@ -48,9 +48,9 @@ export default function Home() {
       ring: "blue" as const,
       icon: <LocationIcon size={32} />,
       description:
-        "Producción 100% en Chiloé. 50+ empleos locales y economía regional.",
+        "Producción 100% en Chiloé. 15 empleos locales y economía regional.",
       stats: [
-        { value: "50+", label: "Empleos" },
+        { value: "15", label: "Empleos" },
         { value: "0km", label: "Producción" },
       ],
     },
@@ -60,9 +60,9 @@ export default function Home() {
       ring: "green" as const,
       icon: <MedalIcon size={32} />,
       description:
-        "Certificación ISO internacional y control riguroso de cada lote.",
+        "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUS S.A. de la Universidad Católica de Chile.",
       stats: [
-        { value: "ISO", label: "Certificado" },
+        { value: "DICTUS", label: "Laboratorio UC" },
         { value: "-60%", label: "CO₂" },
       ],
     },
@@ -157,8 +157,8 @@ export default function Home() {
                 }}
                 className="text-3xl sm:text-5xl md:text-6xl lg:text-[4.5rem]"
               >
-                De la costa
-                <br />a tu proyecto
+                De residuo
+                <br />a oportunidad
               </h1>
               <p
                 style={{
@@ -171,7 +171,8 @@ export default function Home() {
                 }}
                 className="text-base sm:text-xl"
               >
-                Transformamos el plástico que rescatamos de las playas de la Patagonia en Ecomadera de larga duración.
+                Rescatamos plástico para transformarlo en{" "}
+                <strong style={{ fontWeight: 800 }}>Ecotablas de larga duración y calidad</strong>
               </p>
               <div style={{ display: "flex", gap: "1rem", justifyContent: "center", flexWrap: "wrap" }}>
                 <Button size="lg" variant="eco" onClick={() => router.push("/productos")}>
@@ -197,9 +198,9 @@ export default function Home() {
             flexWrap: "wrap",
           }}
         >
-          <Stat value="500+" label="Toneladas rescatadas / año" color="blue" />
+          <Stat value="10+" label="Toneladas recicladas / mes" color="blue" />
           <Stat value="25+" label="Años de vida útil" />
-          <Stat value="50+" label="Empleos en Chiloé" color="blue" />
+          <Stat value="15" label="Empleos en Chiloé" color="blue" />
           <Stat value="-60%" label="Huella de CO₂" />
         </div>
       </section>

@@ -9,6 +9,7 @@ export function Footer() {
     { label: "Proceso", href: "/proceso" },
     { label: "Catálogo", href: "/productos" },
     { label: "Nosotros", href: "/nosotros" },
+    { label: "Noticias", href: "/noticias" },
   ];
 
   const contactItems = [

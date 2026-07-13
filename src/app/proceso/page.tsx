@@ -85,7 +85,7 @@ export default function Proceso() {
       number: "01",
       title: "Sostenibilidad",
       ring: "green" as const,
-      description: "500+ toneladas de plástico rescatado y reciclado anualmente.",
+      description: "Plástico rescatado y reciclado que evitamos que llegue al mar y a los vertederos.",
       stats: [
         { value: "100%", label: "Reciclado" },
         { value: "-60%", label: "CO₂" },
@@ -95,7 +95,7 @@ export default function Proceso() {
       number: "02",
       title: "Durabilidad",
       ring: "blue" as const,
-      description: "Certificaciones ASTM y NCh. Vida útil superior a 25 años.",
+      description: "Vida útil superior a 25 años y resistencia IP65 a la intemperie.",
       stats: [
         { value: "25+", label: "Años" },
         { value: "IP65", label: "Resistencia" },
@@ -105,9 +105,9 @@ export default function Proceso() {
       number: "03",
       title: "Impacto Local",
       ring: "green" as const,
-      description: "Producción 100% en Chiloé. 50+ empleos locales.",
+      description: "Producción 100% en Chiloé. 15 empleos locales.",
       stats: [
-        { value: "50+", label: "Empleos" },
+        { value: "15", label: "Empleos" },
         { value: "0km", label: "Producción" },
       ],
     },
@@ -115,9 +115,9 @@ export default function Proceso() {
       number: "04",
       title: "Calidad",
       ring: "blue" as const,
-      description: "Certificación ISO internacional y control riguroso de cada lote.",
+      description: "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUS S.A. de la Universidad Católica de Chile.",
       stats: [
-        { value: "ISO", label: "Certificado" },
+        { value: "DICTUS", label: "Laboratorio UC" },
         { value: "100%", label: "Inspeccionado" },
       ],
     },

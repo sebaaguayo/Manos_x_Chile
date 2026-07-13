@@ -23,7 +23,7 @@ export default function Nosotros() {
     },
     {
       t: "Calidad",
-      d: "Productos duraderos que cumplen con los más altos estándares industriales, certificados ASTM y NCh.",
+      d: "La calidad de nuestros productos está evaluada y estudiada por el laboratorio DICTUS S.A. de la Universidad Católica de Chile.",
       ring: "blue" as const,
     },
     {

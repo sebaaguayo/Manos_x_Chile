@@ -224,7 +224,7 @@ export default function Catalogo() {
             >
               Materiales para Construcción
             </h2>
-            <Tag variant="blue">ASTM · NCh</Tag>
+            <Tag variant="blue">100% Reciclado</Tag>
           </div>
           <Grid items={RAW} tag="Construcción" ring="blue" />
         </section>
