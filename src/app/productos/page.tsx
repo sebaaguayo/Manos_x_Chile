@@ -9,21 +9,23 @@ import {
   Select,
   Tag,
 } from "@/components/design-system";
+import { ImageZoom } from "@/components/ImageZoom";
 
 interface Product {
   name: string;
   image: string;
   price: string;
   plastic: number | null; // kilos de plástico rescatado · null => cálculo pendiente
+  diagram?: string;       // diagrama de medidas (materiales para construcción)
 }
 
 const RAW: Product[] = [
-  { name: "Tabla 15,5 cm x 5,6 cm x 290 cm", image: "product_tabla_15.jpg", price: "$23.600", plastic: 21 },
-  { name: "Tabla 10 cm x 3,2 cm x 290 cm", image: "product_tabla_10_3_2.jpg", price: "$11.500", plastic: 9 },
-  { name: "Tabla 8 cm x 3 cm x 290 cm", image: "product_tabla_8_3.jpg", price: "$7.900", plastic: 6 },
-  { name: "Tabla 8 cm x 2,5 x 150 cm", image: "product_tabla_8_2_5.jpg", price: "$3.600", plastic: 3 },
-  { name: "Estacón redondo 9,5 cm x 240 cm", image: "product_estacon_redondo.jpg", price: "$18.500", plastic: 15 },
-  { name: "Estacón cuadrado 8,8 cm x 8,8 cm x 200 cm", image: "product_estacon_cuadrado.jpg", price: "$15.800", plastic: 12 },
+  { name: "Tabla 15,5 cm x 5,6 cm x 290 cm", image: "product_tabla_15.jpg", price: "$23.600", plastic: 21, diagram: "diagrama_product_tabla_15.png" },
+  { name: "Tabla 10 cm x 3,2 cm x 290 cm", image: "product_tabla_10_3_2.jpg", price: "$11.500", plastic: 9, diagram: "diagrama_product_tabla_10_3_2.png" },
+  { name: "Tabla 8 cm x 3 cm x 290 cm", image: "product_tabla_8_3.jpg", price: "$7.900", plastic: 6, diagram: "diagrama_product_tabla_8_3.png" },
+  { name: "Tabla 8 cm x 2,5 x 150 cm", image: "product_tabla_8_2_5.jpg", price: "$3.600", plastic: 3, diagram: "diagrama_product_tabla_8_2_5.png" },
+  { name: "Estacón redondo 9,5 cm x 240 cm", image: "product_estacon_redondo.jpg", price: "$18.500", plastic: 15, diagram: "diagrama_product_estacon_redondo.png" },
+  { name: "Estacón cuadrado 8,8 cm x 8,8 cm x 200 cm", image: "product_estacon_cuadrado.jpg", price: "$15.800", plastic: 12, diagram: "diagrama_product_estacon_cuadrado.png" },
 ];
 
 const FINISHED: Product[] = [
@@ -53,17 +55,20 @@ function QuoteModal({ product, onClose }: QuoteModalProps) {
         alignItems: "center",
         justifyContent: "center",
         zIndex: 1000,
-        padding: "1.5rem",
+        padding: "1rem",
+        overflowY: "auto",
       }}
     >
       <div
         onClick={(e) => e.stopPropagation()}
+        className="p-6 sm:p-10"
         style={{
           background: "var(--paper)",
           borderRadius: "var(--radius-xl)",
-          padding: "2.5rem",
           maxWidth: 480,
           width: "100%",
+          maxHeight: "calc(100dvh - 2rem)",
+          overflowY: "auto",
           boxShadow: "var(--shadow-modal)",
         }}
       >
@@ -152,6 +157,7 @@ function QuoteModal({ product, onClose }: QuoteModalProps) {
 
 export default function Catalogo() {
   const [quote, setQuote] = useState<Product | null>(null);
+  const [zoom, setZoom] = useState<{ src: string; alt: string } | null>(null);
   const wrap = { maxWidth: 1280, margin: "0 auto", padding: "0 2rem" };
 
   const Grid = ({ items, tag, ring }: { items: Product[]; tag: string; ring: "blue" | "green" }) => (
@@ -166,6 +172,8 @@ export default function Catalogo() {
           price={p.price}
           recycledKg={p.plastic ?? undefined}
           recycledPending={p.plastic === null}
+          diagram={p.diagram ? `/assets/${p.diagram}` : undefined}
+          onExpandImage={(src, alt) => setZoom({ src, alt })}
           onCta={() => setQuote(p)}
         />
       ))}
@@ -252,6 +260,7 @@ export default function Catalogo() {
       </div>
 
       {quote && <QuoteModal product={quote} onClose={() => setQuote(null)} />}
+      {zoom && <ImageZoom src={zoom.src} alt={zoom.alt} onClose={() => setZoom(null)} />}
     </div>
   );
 }

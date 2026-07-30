@@ -27,6 +27,10 @@ export interface ProductCardProps {
   recycledPending?: boolean;
   /** Nota pequeña junto al precio. Por defecto "*IVA incluído". */
   ivaNote?: string;
+  /** Ruta al diagrama de medidas. Habilita las pestañas Foto / Medidas. */
+  diagram?: string;
+  /** Abre el visor con zoom para la imagen visible. */
+  onExpandImage?: (src: string, alt: string) => void;
 }
 
 export function ProductCard(props: ProductCardProps): JSX.Element;

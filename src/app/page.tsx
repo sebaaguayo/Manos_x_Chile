@@ -23,7 +23,7 @@ export default function Home() {
       ring: "blue" as const,
       icon: <WavesIcon size={32} />,
       description:
-        "Recuperamos plástico de las costas y la industria acuícola de la Patagonia antes de que llegue al mar.",
+        "Recuperamos plástico de las playas y costas de la Patagonia antes de que llegue al mar.",
       stats: [
         { value: "100%", label: "Reciclado" },
         { value: "0", label: "Residuos al vertedero" },
@@ -50,7 +50,7 @@ export default function Home() {
         "Producción 100% en Chiloé. 15 empleos locales y economía regional.",
       stats: [
         { value: "15", label: "Empleos" },
-        { value: "0km", label: "Producción" },
+        { value: "100%", label: "Chiloé" },
       ],
     },
     {
@@ -71,7 +71,7 @@ export default function Home() {
     {
       number: "01",
       title: "Rescate",
-      desc: "Recolectamos plástico de playas, costas y la industria acuícola.",
+      desc: "Recolectamos plástico de las playas y costas de Chiloé.",
       image: "rescate.png",
       alt: "Ilustración del rescate de plástico en la costa",
     },
@@ -238,7 +238,7 @@ export default function Home() {
             </h2>
             <p style={{ fontSize: "1.1rem", lineHeight: 1.65, color: "var(--ink-500)", fontWeight: 500, margin: "0 0 1.5rem" }}>
               Manos x Chile nace en Chiloé con una misión clara: evitar que los residuos plásticos de
-              nuestras playas y de la industria acuícola terminen en el océano. Los rescatamos, los
+              nuestras playas terminen en el océano. Los rescatamos, los
               reciclamos y los transformamos en Ecomadera de alta calidad.
             </p>
             <div style={{ display: "flex", gap: "0.75rem", marginBottom: "2rem", flexWrap: "wrap" }}>

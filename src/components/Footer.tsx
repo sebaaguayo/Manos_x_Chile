@@ -3,6 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { InstagramIcon, FacebookIcon, LinkedInIcon } from "./Icons";
 
 export function Footer() {
   const navigationItems = [
@@ -18,9 +19,9 @@ export function Footer() {
   ];
 
   const socialItems = [
-    { label: "Instagram", href: "https://instagram.com" },
-    { label: "Facebook", href: "https://facebook.com" },
-    { label: "LinkedIn", href: "https://linkedin.com" },
+    { label: "Instagram", href: "https://instagram.com", icon: <InstagramIcon size={17} color="#fff" /> },
+    { label: "Facebook", href: "https://facebook.com", icon: <FacebookIcon size={17} color="#fff" /> },
+    { label: "LinkedIn", href: "https://linkedin.com", icon: <LinkedInIcon size={17} color="#fff" /> },
   ];
 
   return (
@@ -93,9 +94,18 @@ export function Footer() {
                       href={it.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{ fontSize: "0.9rem", color: "rgba(255,255,255,0.75)", textDecoration: "none", fontWeight: 500 }}
+                      style={{
+                        fontSize: "0.9rem",
+                        color: "rgba(255,255,255,0.75)",
+                        textDecoration: "none",
+                        fontWeight: 500,
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "0.6rem",
+                      }}
                       className="hover:text-white transition"
                     >
+                      <span style={{ display: "inline-flex", opacity: 0.9 }}>{it.icon}</span>
                       {it.label}
                     </a>
                   </li>

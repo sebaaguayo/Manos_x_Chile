@@ -156,8 +156,8 @@ export default function Nosotros() {
             }}
             className="text-base sm:text-lg"
           >
-            En Manos x Chile recuperamos residuos plásticos de las playas, la industria de la
-            acuicultura y el uso doméstico, y los transformamos en productos sostenibles de alta calidad.
+            En Manos x Chile recuperamos residuos plásticos de las playas y del uso doméstico,
+            y los transformamos en productos sostenibles de alta calidad.
           </p>
           <p
             style={{

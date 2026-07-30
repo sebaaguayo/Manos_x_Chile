@@ -8,6 +8,7 @@ import {
   Select,
   Card,
 } from "@/components/design-system";
+import { WhatsAppIcon, MailIcon, MapPinIcon } from "@/components/Icons";
 
 export default function Contacto() {
   const [sent, setSent] = useState(false);
@@ -20,6 +21,7 @@ export default function Contacto() {
       cta: "Abrir WhatsApp",
       href: "https://wa.me/56999393549",
       ring: "green" as const,
+      icon: <WhatsAppIcon size={30} />,
     },
     {
       t: "Email",
@@ -27,6 +29,7 @@ export default function Contacto() {
       cta: "Enviar Email",
       href: "mailto:Jmtoro@manosxchile.cl",
       ring: "blue" as const,
+      icon: <MailIcon size={30} />,
     },
     {
       t: "Ubicación",
@@ -34,6 +37,7 @@ export default function Contacto() {
       cta: "Ver en Maps",
       href: "https://maps.google.com/?q=Ruta+W-450+Camino+Piruquina+Chiloe",
       ring: "green" as const,
+      icon: <MapPinIcon size={30} />,
     },
   ];
 
@@ -94,8 +98,23 @@ export default function Contacto() {
               ring={o.ring}
               interactive
               padding="2.25rem 2rem"
-              style={{ textAlign: "center", display: "flex", flexDirection: "column" }}
+              style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}
             >
+              <div
+                style={{
+                  width: 64,
+                  height: 64,
+                  borderRadius: "var(--radius-full)",
+                  background: o.ring === "green" ? "var(--green-50)" : "var(--blue-50)",
+                  color: o.ring === "green" ? "var(--green-500)" : "var(--blue-500)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  marginBottom: "1.4rem",
+                }}
+              >
+                {o.icon}
+              </div>
               <h3
                 style={{
                   fontSize: "1.1rem",

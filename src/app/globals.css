@@ -196,10 +196,208 @@ html[data-theme="dark"] .logo-dark {
   transform: scale(1.07) translate(1.5%, -1.5%);
 }
 
+/* ============================================================
+   Botón flotante de WhatsApp (todo el sitio)
+   ============================================================ */
+.wa-fab {
+  position: fixed;
+  right: max(1.25rem, env(safe-area-inset-right));
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  z-index: 900;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full);
+  background: #25d366;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35), 0 2px 6px rgba(0, 0, 0, 0.18);
+  transition: transform var(--dur-base) var(--ease-out), box-shadow var(--dur-base) ease;
+}
+.wa-fab:hover {
+  transform: scale(1.08);
+  box-shadow: 0 10px 26px rgba(37, 211, 102, 0.45), 0 3px 8px rgba(0, 0, 0, 0.2);
+}
+.wa-fab:active {
+  transform: scale(0.96);
+}
+@media (max-width: 640px) {
+  .wa-fab {
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* ============================================================
+   Visor de imagen con zoom (diagramas de producto)
+   ============================================================ */
+.zoom-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  background: rgba(20, 20, 20, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.zoom-stage {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
+.zoom-stage img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transform-origin: center center;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.zoom-toolbar {
+  position: absolute;
+  bottom: max(1.25rem, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: var(--radius-full);
+  padding: 0.4rem 0.5rem;
+  box-shadow: var(--shadow-md);
+}
+.zoom-toolbar button {
+  min-width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: var(--radius-full);
+  background: var(--surface-1);
+  color: #272626;
+  font-size: 1.1rem;
+  font-weight: 800;
+  cursor: pointer;
+  padding: 0 0.6rem;
+}
+.zoom-toolbar button:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.zoom-toolbar .zoom-reset {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.zoom-toolbar span {
+  min-width: 52px;
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #272626;
+}
+.zoom-close {
+  position: absolute;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: rgba(255, 255, 255, 0.95);
+  color: #272626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.zoom-hint {
+  position: absolute;
+  top: max(1.4rem, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .zoom-hint {
+    display: none;
+  }
+}
+
+/* ============================================================
+   Pestañas Foto / Medidas dentro de la tarjeta de producto
+   ============================================================ */
+.media-tabs {
+  position: absolute;
+  bottom: 0.7rem;
+  left: 0.7rem;
+  display: flex;
+  gap: 0.3rem;
+  background: rgba(255, 254, 254, 0.92);
+  backdrop-filter: blur(6px);
+  border-radius: var(--radius-full);
+  padding: 0.2rem;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.12));
+}
+.media-tabs button {
+  border: none;
+  background: transparent;
+  color: #4a4a4a;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: background var(--dur-fast) ease, color var(--dur-fast) ease;
+}
+.media-tabs button[data-active="true"] {
+  background: var(--blue-500);
+  color: #fff;
+}
+.media-expand {
+  position: absolute;
+  bottom: 0.7rem;
+  right: 0.7rem;
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-full);
+  border: none;
+  background: rgba(255, 254, 254, 0.92);
+  backdrop-filter: blur(6px);
+  color: #272626;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm, 0 2px 8px rgba(0, 0, 0, 0.12));
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+.media-expand:hover {
+  transform: scale(1.1);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .process-illustration img {
     animation: none;
     object-position: 50% 50%;
+  }
+  .wa-fab,
+  .wa-fab:hover {
+    transform: none;
+    transition: none;
   }
   .depth-card,
   .depth-card:hover,

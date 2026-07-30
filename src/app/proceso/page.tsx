@@ -26,7 +26,7 @@ export default function Proceso() {
       image: "rescate.png",
       alt: "Ilustración del rescate de plástico en la costa",
       ring: "blue" as const,
-      description: "Recuperamos el plástico de las costas y la industria acuícola de la Patagonia.",
+      description: "Recuperamos el plástico de las playas y costas de la Patagonia.",
     },
     {
       title: "Transformación",
@@ -50,7 +50,7 @@ export default function Proceso() {
       title: "Rescate",
       icon: <WavesIcon size={34} />,
       description:
-        "Recolectamos plástico de las playas y costas, de la industria de la acuicultura y de uso doméstico en Chiloé y Puerto Montt.",
+        "Recolectamos plástico de las playas y costas, y de uso doméstico en Chiloé y Puerto Montt.",
     },
     {
       number: "02",
@@ -110,7 +110,7 @@ export default function Proceso() {
       description: "Producción 100% en Chiloé. 15 empleos locales.",
       stats: [
         { value: "15", label: "Empleos" },
-        { value: "0km", label: "Producción" },
+        { value: "100%", label: "Chiloé" },
       ],
     },
     {

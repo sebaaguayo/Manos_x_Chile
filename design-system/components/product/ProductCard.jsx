@@ -46,8 +46,15 @@ export function ProductCard({
   recycledKg,             // number — kilos de plástico rescatado
   recycledPending = false, // true => "cálculo pendiente"
   ivaNote = '*IVA incluido',
+  diagram,                // ruta al diagrama de medidas (opcional)
+  onExpandImage,          // (src, alt) => void — abre el visor con zoom
 }) {
   const [hover, setHover] = React.useState(false);
+  const [view, setView] = React.useState('photo');
+
+  const showingDiagram = Boolean(diagram) && view === 'diagram';
+  const currentSrc = showingDiagram ? diagram : image;
+  const currentAlt = showingDiagram ? `Diagrama de medidas — ${name}` : name;
 
   const ringShadow = ring === 'green' ? 'var(--ring-card-green)' : 'var(--ring-card-blue)';
   const btnVariant = ctaVariant || (ring === 'green' ? 'eco' : 'primary');
@@ -77,19 +84,23 @@ export function ProductCard({
           background: 'var(--surface-2)',
         }}
       >
-        {image && (
+        {currentSrc && (
           <img
-            src={image}
-            alt={name}
+            src={currentSrc}
+            alt={currentAlt}
             style={{
               position: 'absolute',
               inset: 0,
               width: '100%',
               height: '100%',
-              objectFit: 'cover',
-              transform: hover ? 'scale(1.06)' : 'scale(1)',
+              /* El diagrama se muestra completo; la foto llena el marco */
+              objectFit: showingDiagram ? 'contain' : 'cover',
+              background: showingDiagram ? 'var(--paper)' : 'transparent',
+              transform: !showingDiagram && hover ? 'scale(1.06)' : 'scale(1)',
               transition: 'transform var(--dur-slow) var(--ease-out)',
+              cursor: onExpandImage ? 'zoom-in' : 'default',
             }}
+            onClick={onExpandImage ? () => onExpandImage(currentSrc, currentAlt) : undefined}
           />
         )}
         {tag && (
@@ -110,6 +121,44 @@ export function ProductCard({
           >
             {tag}
           </span>
+        )}
+
+        {diagram && (
+          <div className="media-tabs" role="group" aria-label="Vista de la imagen">
+            <button
+              type="button"
+              data-active={!showingDiagram}
+              onClick={() => setView('photo')}
+              aria-pressed={!showingDiagram}
+            >
+              Foto
+            </button>
+            <button
+              type="button"
+              data-active={showingDiagram}
+              onClick={() => setView('diagram')}
+              aria-pressed={showingDiagram}
+            >
+              Medidas
+            </button>
+          </div>
+        )}
+
+        {onExpandImage && currentSrc && (
+          <button
+            type="button"
+            className="media-expand"
+            onClick={() => onExpandImage(currentSrc, currentAlt)}
+            aria-label={showingDiagram ? 'Ampliar diagrama de medidas' : 'Ampliar foto del producto'}
+            title="Ampliar"
+          >
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+              <circle cx="11" cy="11" r="7" />
+              <line x1="11" y1="8" x2="11" y2="14" />
+              <line x1="8" y1="11" x2="14" y2="11" />
+              <line x1="16.5" y1="16.5" x2="21" y2="21" />
+            </svg>
+          </button>
         )}
       </div>
 
