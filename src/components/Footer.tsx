@@ -19,9 +19,9 @@ export function Footer() {
   ];
 
   const socialItems = [
-    { label: "Instagram", href: "https://instagram.com", icon: <InstagramIcon size={17} color="#fff" /> },
-    { label: "Facebook", href: "https://facebook.com", icon: <FacebookIcon size={17} color="#fff" /> },
-    { label: "LinkedIn", href: "https://linkedin.com", icon: <LinkedInIcon size={17} color="#fff" /> },
+    { label: "Instagram", href: "https://www.instagram.com/manosxchile/", icon: <InstagramIcon size={17} color="#fff" /> },
+    { label: "Facebook", href: "https://www.facebook.com/manosporchile/", icon: <FacebookIcon size={17} color="#fff" /> },
+    { label: "LinkedIn", href: "https://www.linkedin.com/company/manos-x-chile-reciclaje/", icon: <LinkedInIcon size={17} color="#fff" /> },
   ];
 
   return (
